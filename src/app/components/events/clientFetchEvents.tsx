@@ -35,7 +35,9 @@ export const ClientFetchEvents: FC<ClientFetchEventsProps> = ({
   const debouncedSearchTerm = useDebounce(searchQuery, 300);
 
   useEffect(() => {
-    fetchData();
+    if (debouncedSearchTerm) {
+      fetchData();
+    } else setEvents(data);
   }, [debouncedSearchTerm]);
 
   if (events && events.length <= 0) return <p>No Events</p>;
