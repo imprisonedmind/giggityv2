@@ -13,5 +13,5 @@ export default async function Page({ params }: PageProps) {
   if (!data.events)
     return <p className={"capitalize"}>No {params.location} Events</p>;
 
-  return <ClientFetchEvents data={data.events} location={params.location} />;
+  return <ClientFetchEvents data={data} location={params.location} />;
 }

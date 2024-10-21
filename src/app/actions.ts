@@ -6,15 +6,20 @@ interface fetchEventsProps {
   tags?: string;
   name?: string;
   location?: string;
+  page?: string;
 }
 
 export async function fetchEvents({
   tags,
   name,
   location,
+  page,
 }: fetchEventsProps = {}) {
   const queryParams = new URLSearchParams();
 
+  if (page) {
+    queryParams.append("page", page);
+  }
   if (tags && tags.length > 0) {
     queryParams.append("tags", tags);
   }

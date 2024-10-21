@@ -19,7 +19,7 @@ export default async function CategoryPage({ params }: ParamProps) {
 
   return (
     <ClientFetchEvents
-      data={data.events}
+      data={data}
       category={params.category}
       location={params.location}
     />

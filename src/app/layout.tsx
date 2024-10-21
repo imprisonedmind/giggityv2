@@ -4,6 +4,7 @@ import "./globals.css";
 import { SideBar } from "@/app/components/side-bar/sideBar";
 import { Menu } from "@/app/components/menu-bar/menu";
 import { SearchProvider } from "@/lib/searchQueryConext";
+import { Main } from "next/document";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -32,11 +33,15 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <SearchProvider>
-          <Menu />
-          <div className={"relative flex flex-row"}>
-            <SideBar />
-            <section className={"relative flex flex-grow"}>{children}</section>
-          </div>
+          <main className={"h-[100svh] w-[100svw]"}>
+            <Menu />
+            <div className={"relative flex flex-row"}>
+              <SideBar />
+              <section className={"relative flex flex-grow"}>
+                {children}
+              </section>
+            </div>
+          </main>
         </SearchProvider>
       </body>
     </html>

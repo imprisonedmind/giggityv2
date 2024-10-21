@@ -26,9 +26,10 @@ export const CustomEvent: FC<CustomEventProps> = ({ event, category }) => {
   return (
     <Link href={`/discover/${queryParams}`}>
       <Card
-        className={
-          "flex flex-col overflow-clip relative justify-end cursor-pointer h-full"
-        }
+        className={`
+          flex flex-col overflow-clip relative justify-end cursor-pointer h-full
+          rounded-xl
+        `}
       >
         <div className={"flex w-full relative h-60 flex-shrink-0"}>
           <Image
@@ -42,9 +43,7 @@ export const CustomEvent: FC<CustomEventProps> = ({ event, category }) => {
           />
         </div>
 
-        <CardHeader
-          className={"p-2 pb-3 gap-1 h-full flex-grow justify-between"}
-        >
+        <CardHeader className={"p-2 gap-1 h-full flex-grow justify-between"}>
           <div className={"flex flex-col gap-1"}>
             <CardTitle className={"line-clamp-1 text-lg leading-6"}>
               {event.name}
