@@ -1,6 +1,8 @@
 "use server";
 
-const apiURL = process.env.API_URL;
+import { config } from "@/lib/config";
+
+const apiURL = config.apiUrl;
 
 interface fetchEventsProps {
   tags?: string;

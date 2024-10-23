@@ -1,3 +1,4 @@
+# nextjs dockerfile
 FROM oven/bun:alpine AS base
 
 # Stage 1: Install dependencies
