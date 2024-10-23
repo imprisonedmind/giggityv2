@@ -26,10 +26,10 @@ export const CustomEvent: FC<CustomEventProps> = ({ event, category }) => {
   return (
     <Link href={`/discover/${queryParams}`}>
       <Card
-        className={`
-          flex flex-col overflow-clip relative justify-end cursor-pointer h-full
-          rounded-xl
-        `}
+        className={cn(
+          "flex flex-col overflow-clip relative justify-end cursor-pointer h-full",
+          "rounded-xl"
+        )}
       >
         <div className={"flex w-full relative h-60 flex-shrink-0"}>
           <Image
@@ -37,7 +37,6 @@ export const CustomEvent: FC<CustomEventProps> = ({ event, category }) => {
             fill={true}
             sizes={"20vw"}
             src={`https:${event.imageUrl}`}
-            // alt={event.seoMetadata.description ?? event.description}
             alt={event.name}
             className={"relative h-full w-auto object-cover bg-gray-50"}
           />

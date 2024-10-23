@@ -48,7 +48,10 @@ export const SideBarElement: FC<SideBarElementProps> = ({ logo, title }) => {
       href={link}
       className={"flex relative px-2 w-full"}
     >
-      <Button variant={variant} className={cn("!w-full justify-start")}>
+      <Button
+        variant={variant}
+        className={cn("!w-full justify-start text-sidebar-primary")}
+      >
         {logo}
         {title}
       </Button>

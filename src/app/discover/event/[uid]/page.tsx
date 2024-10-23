@@ -16,12 +16,14 @@ export default async function Page({ params }: ParamProps) {
     return <p className={"capitalize"}>No {params.uid} Events</p>;
 
   return (
-    <div className="flex flex-col h-[96svh] gap-4 overflow-y-scroll max-w-[1200px] mx-auto">
+    <div className="flex flex-col gap-4 overflow-y-scroll w-full h-full">
       <div className={"flex flex-col gap-4 p-4"}>
         <SingleEventCard event={data.event} />
 
         <div
-          className={"flex flex-row gap-2 overflow-x-scroll overflow-y-none"}
+          className={
+            "w-full flex flex-row gap-2 overflow-x-scroll overflow-y-none"
+          }
         >
           {data.event.tickets
             .sort((a: any, b: any) => a.price - b.price)

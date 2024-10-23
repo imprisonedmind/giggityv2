@@ -1,6 +1,7 @@
 "use client";
 import { useParams } from "next/navigation";
 import { useSearch } from "@/lib/searchQueryConext";
+import { cn } from "@/lib/utils";
 
 export default function MainSearch() {
   const { setSearchQuery, searchQuery } = useSearch();
@@ -26,10 +27,10 @@ export default function MainSearch() {
   return (
     <input
       onChange={(e) => setSearchQuery(e.target.value)}
-      className={`
-        border rounded-md bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-100 
-        truncate w-[220px] capitalize px-2
-      `}
+      className={cn(
+        "border rounded-lg bg-sidebar focus:outline-none focus:ring-1",
+        "truncate w-[220px] capitalize px-2 p-1 focus:ring-gray-100 pl-3"
+      )}
       placeholder={`Search for ${placeholder}...`}
       value={searchQuery || ""}
     />

@@ -6,6 +6,8 @@ interface SideBarTitleProps {
 
 export const SideBarTitle: FC<SideBarTitleProps> = ({ title }) => {
   return (
-    <h2 className="px-4 text-lg font-semibold tracking-tight ">{title}</h2>
+    <h2 className="px-4 text-lg font-semibold tracking-tight text-sidebar-primary">
+      {title}
+    </h2>
   );
 };

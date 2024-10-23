@@ -34,6 +34,7 @@ export async function fetchEvents({
 
   const res = await fetch(`${apiURL}/events?${queryParams.toString()}`, {
     method: "GET",
+    next: { revalidate: 300 },
   });
 
   return await res.json();

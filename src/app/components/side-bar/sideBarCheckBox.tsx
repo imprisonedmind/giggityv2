@@ -45,7 +45,7 @@ export const SideBarCheckBox: FC<SideBarCheckBoxProps> = ({ title }) => {
         onClick={handleButtonClick}
         className={cn(
           buttonVariants({ variant: isSelected ? "secondary" : "ghost" }),
-          "w-full justify-start cursor-pointer"
+          "w-full justify-start cursor-pointer select-none"
         )}
       >
         <Checkbox checked={isSelected} />

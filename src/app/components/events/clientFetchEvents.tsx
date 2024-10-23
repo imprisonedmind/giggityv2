@@ -5,8 +5,8 @@ import { fetchEvents } from "@/app/actions";
 import { useDebounce } from "@uidotdev/usehooks";
 import { EventsWrapper } from "@/app/components/wrappers/eventsWrapper";
 import { useSearch } from "@/lib/searchQueryConext";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { PaginationButton } from "@/app/components/buttons/paginationButton";
+import SkeletonWrapper from "@/app/components/skeleton/skeletonWrapper";
 
 interface ClientFetchEventsProps {
   data: any;
@@ -30,8 +30,10 @@ export const ClientFetchEvents: FC<ClientFetchEventsProps> = ({
 
   // TODO: just use data and then data.events, we should trust the server for counts
   const [events, setEvents] = useState(!searchQuery ? data.events : undefined);
+  const [loading, setLoading] = useState(false);
 
   const fetchData = async () => {
+    setLoading(true);
     const data = await fetchEvents({
       name: searchQuery,
       tags: category,
@@ -39,6 +41,7 @@ export const ClientFetchEvents: FC<ClientFetchEventsProps> = ({
       page: page.toString(),
     });
     if (data.events) {
+      setLoading(false);
       setEvents(data.events);
       setTotalPages(data.totalPages);
       setTotalRecords(data.records);
@@ -99,9 +102,10 @@ export const ClientFetchEvents: FC<ClientFetchEventsProps> = ({
     }
   };
 
+  if (loading) return <SkeletonWrapper />;
   if (events && events.length <= 0) return <p>No Events</p>;
   return (
-    <div className={"flex flex-col justify-between"}>
+    <div className={"flex flex-col justify-between h-full w-full"}>
       <EventsWrapper>
         {events?.map((event: any, index: number) => {
           return <CustomEvent key={index} event={event} />;
@@ -109,7 +113,7 @@ export const ClientFetchEvents: FC<ClientFetchEventsProps> = ({
       </EventsWrapper>
       <div
         className={
-          "flex flex-row justify-between border-t px-4 p-2 items-center"
+          "flex flex-row justify-between border-t px-4 p-2 items-center w-full"
         }
       >
         <p
@@ -119,26 +123,16 @@ export const ClientFetchEvents: FC<ClientFetchEventsProps> = ({
         <div className={"flex flex-row items-center gap-4"}>
           <p className={"text-xs"}>{`Page ${page} of ${totalPages}`}</p>
           <div className={"flex flex-row gap-1"}>
-            <Button
-              onClick={prevPage}
+            <PaginationButton
+              title={"Prev"}
               disabled={page <= 1}
-              className={cn(
-                "text-xs p-1 px-2 h-fit",
-                page <= 1 && "opacity-50 cursor-not-allowed"
-              )}
-            >
-              Prev
-            </Button>
-            <Button
-              onClick={nextPage}
+              callback={prevPage}
+            />
+            <PaginationButton
+              title={"Next"}
               disabled={page >= totalPages}
-              className={cn(
-                "text-xs p-1 px-2 h-fit",
-                page >= totalPages && "opacity-50 cursor-not-allowed"
-              )}
-            >
-              Next
-            </Button>
+              callback={nextPage}
+            />
           </div>
         </div>
       </div>
