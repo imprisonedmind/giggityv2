@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "bun --bun next dev --turbo",
+    "build": "bun --bun next build",
+    "start": "bun .next/standalone/server.js",
+    "dbuild": "docker build -t giggityv2 .",
+    "drun": "docker run -p 3000:3000 giggityv2",
     "lint": "next lint"
   },
   "dependencies": {

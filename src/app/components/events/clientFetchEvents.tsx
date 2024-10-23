@@ -28,6 +28,7 @@ export const ClientFetchEvents: FC<ClientFetchEventsProps> = ({
     data.currentRecords
   );
 
+  // TODO: just use data and then data.events, we should trust the server for counts
   const [events, setEvents] = useState(!searchQuery ? data.events : undefined);
 
   const fetchData = async () => {
