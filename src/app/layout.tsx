@@ -4,7 +4,8 @@ import "./globals.css";
 import { SideBar } from "@/app/components/side-bar/sideBar";
 import { Menu } from "@/app/components/menu-bar/menu";
 import { SearchProvider } from "@/lib/searchQueryConext";
-import { Main } from "next/document";
+
+export const dynamic = "force-dynamic";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
