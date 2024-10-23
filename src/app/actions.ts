@@ -1,6 +1,6 @@
 "use server";
 
-const apiURL = process.env.NEXT_PUBLIC_API_URL;
+const apiURL = process.env.API_URL;
 
 interface fetchEventsProps {
   tags?: string;
