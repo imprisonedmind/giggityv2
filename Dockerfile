@@ -10,6 +10,10 @@ RUN bun install --frozen-lockfile
 # Stage 2: Build the application
 FROM base AS builder
 WORKDIR /app
+
+ARG API_URL
+ENV API_URL=$API_URL
+
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN bun run build
@@ -18,6 +22,10 @@ RUN bun run build
 FROM base AS runner
 WORKDIR /app
 ENV NODE_ENV=production
+
+ARG API_URL
+ENV API_URL=$API_URL
+
 #COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
