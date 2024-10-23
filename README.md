@@ -6,8 +6,8 @@ user experience for event browsing near users.
 This project is set up to be run with containers on a VPS
 via a main parent docker [repo](https://github.com/imprisonedmind/giggity-docker).
 ```bash
-docker build -t giggityv2 .
-docker run -p 3000:3000 giggityv2
+bun dbuild
+bun drun
 ```
 Go to [localhost:3000](http://localhost:3000)
 
