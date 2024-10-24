@@ -1,3 +1,4 @@
+"use client";
 import { FC } from "react";
 import { calcColours, cn, timeUntilEvent } from "@/lib/utils";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
